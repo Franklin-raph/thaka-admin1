@@ -1,0 +1,10 @@
+.paginationBtns a{
+  border: 1px solid #166534;
+  padding: 3px 5px;
+  border-radius: 4px;
+}
+
+.paginationBtns a:hover{
+  background-color: #166534;
+  color: #fff;
+}
