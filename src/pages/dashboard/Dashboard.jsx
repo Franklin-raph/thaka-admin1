@@ -86,10 +86,10 @@ const Dashboard = ({baseUrl}) => {
                   {customer.kyc_status}
                 </td>
                 <td class="px-6 py-4">
-                  {customer.email}
+                  {customer?.email}
                 </td>
                 <td class="px-6 py-4">
-                  {customer.phone}
+                  {customer?.phone}
                 </td>
             </tr>
             )

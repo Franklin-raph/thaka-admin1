@@ -20,7 +20,7 @@ const TopNav = () => {
 
   return (
     <div className='w-[85%] bg-white fixed shadow right-0 flex items-center justify-between py-[1rem] px-[3rem] z-[99]'>
-      <p className='font-[500] text-[18px]'>Hello, {admin.data.emailExist.email}</p>
+      <p className='font-[500] text-[18px]'>Hello, {admin?.data?.payload?.email}</p>
       <div className='flex items-center'>
         <dvi className='p-3 cursor-pointer bg-primary-color text-white rounded-full' onClick={signOutAdmin}>
           <p className='flex items-center gap-2'>
