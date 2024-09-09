@@ -9,7 +9,7 @@ import Dashboard from './pages/dashboard/Dashboard'
 function App() {
 
   // const baseUrl = 'https://cometake.pythonanywhere.com/administrator'
-  const baseUrl = 'https://api.yamltech.com/administrator'
+  const baseUrl = 'https:tracabe.onrender.com'
   const admin = JSON.parse(localStorage.getItem('admin'))
 
   return (

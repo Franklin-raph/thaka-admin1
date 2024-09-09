@@ -12,10 +12,10 @@ const Dashboard = ({baseUrl}) => {
   const [allCustomers, setAllCustomers] = useState([])
 
   async function getAllCustomers(){
-    console.log(admin.data[0].access ,`${baseUrl}/dashboard/all-customers`);
-    const res = await fetch(`${baseUrl}/dashboard/all-customers`,{
+    console.log(admin.data.accessToken, `${baseUrl}/admin/users`);
+    const res = await fetch(`${baseUrl}/admin/users`,{
       headers:{
-        Authorization:`Bearer ${admin.data[0].access}`
+        Authorization:`Bearer ${admin.data.accessToken}`
       }
     })
     const data = await res.json()
@@ -37,6 +37,7 @@ const Dashboard = ({baseUrl}) => {
 
   useEffect(() => {
     // Ensure user is logged in
+    getAllCustomers()
     if (!admin) {
       navigate('/');
       return; // Exit early if no user
