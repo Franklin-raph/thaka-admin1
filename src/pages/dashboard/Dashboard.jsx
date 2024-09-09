@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 // import CustomerDropDown from '../../components/customer-drop-down/CustomerDropDown'
 import { useNavigate } from 'react-router-dom'
-// import ReactPaginate from 'react-paginate'
+import ReactPaginate from 'react-paginate'
 
 const Dashboard = ({baseUrl}) => {
 
@@ -19,9 +19,9 @@ const Dashboard = ({baseUrl}) => {
       }
     })
     const data = await res.json()
-    console.log(data);
+    console.log(data.data.users);
     if(res.ok){
-      setAllCustomers(data.data.reverse())
+      setAllCustomers(data.data.users.reverse())
     }
     console.log(res, data);
   }
@@ -40,16 +40,9 @@ const Dashboard = ({baseUrl}) => {
     getAllCustomers()
     if (!admin) {
       navigate('/');
-      return; // Exit early if no user
+      return;
     }
-
-    // Check if the page has been reloaded
-    if (!sessionStorage.getItem("reloaded")) {
-      // Use sessionStorage to ensure it's only reloaded once per session
-      sessionStorage.setItem("reloaded", "true");
-      window.location.reload();
-    }
-  }, [navigate, admin]); 
+  }, []); 
 
   const [pageNumber, setPageNumber] = useState(0)
 
@@ -67,7 +60,7 @@ const Dashboard = ({baseUrl}) => {
         .map((customer, index) => {
             return(
               <tr class="bg-white border-b cursor-pointer" onClick={e => navigate(`/customer/${customer.id}`)}>
-                <td class="pl-3 pr-6 py-4">
+                {/* <td class="pl-3 pr-6 py-4">
                   {index + 1 }
                 </td>
                 <td class="pl-3 pr-6 py-4">
@@ -85,13 +78,13 @@ const Dashboard = ({baseUrl}) => {
                   customer.kyc_status === 'rejected' ? 'text-red-500' : 'text-green-500'
                 }`}>
                   {customer.kyc_status}
-                </td>
+                </td> */}
                 <td class="px-6 py-4">
                   {customer?.email}
                 </td>
-                <td class="px-6 py-4">
+                {/* <td class="px-6 py-4">
                   {customer?.phone}
-                </td>
+                </td> */}
             </tr>
             )
         })
@@ -104,26 +97,26 @@ const Dashboard = ({baseUrl}) => {
 
   return (
     <div className='shadow bg-white rounded-[20px] p-[30px]'>
-      <p className='text-[#333333] text-[20px] font-[700]'>Users <span className='text-[#A1A1A1] font-[400]'>(100)</span> </p>
-      <div className='rounded-[8px] border-2 border-[#DCDCDC] p-[30px] mt-3'>
-        {/* <div className='flex items-center gap-[12px]'>
+      <p className='text-[#333333] text-[20px] font-[700]'>Users <span className='text-[#A1A1A1] font-[400]'>({allCustomers.length})</span> </p>
+      {/* <div className='rounded-[8px] border-2 border-[#DCDCDC] p-[30px] mt-3'>
+        <div className='flex items-center gap-[12px]'>
           {
             filterArray.map(filter => (
               <p className='bg-[#EBEBEB] py-1 w-[100px] text-center cursor-pointer text-[#A1A1A1] text-[14px] rounded-full'>{filter}</p>
             ))
           }
-        </div> */}
+        </div>
         <div className='mt-10'>
           <p className='text-[#101010]'>Search by name/email</p>
           <input className='border outline-none border-[#C8C8C8] px-2 py-[6px] mt-[6px] rounded text-[14px]' onChange={e => setSearchString(e.target.value)} type="text" placeholder='Customer Name' />
         </div>
-      </div>
+      </div> */}
 
       <div class="relative overflow-x-auto sm:rounded-lg mt-9">
           <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
               <thead class="text-[14px] text-[#5C5C5C] capitalize border-b">
                   <tr>
-                      <th scope="col" class="pl-3 pr-6 py-3">
+                      {/* <th scope="col" class="pl-3 pr-6 py-3">
                           S/N
                       </th>
                       <th scope="col" class="pl-3 pr-6 py-3">
@@ -134,13 +127,13 @@ const Dashboard = ({baseUrl}) => {
                       </th>
                       <th scope="col" class="px-6 py-3">
                           Last Visited
-                      </th>
+                      </th> */}
                       <th scope="col" class="px-6 py-3">
                           Email
                       </th>
-                      <th scope="col" class="px-6 py-3">
+                      {/* <th scope="col" class="px-6 py-3">
                           Phone
-                      </th>
+                      </th> */}
                   </tr>
               </thead>
               <tbody>
@@ -180,7 +173,7 @@ const Dashboard = ({baseUrl}) => {
                 }
               </tbody>
           </table>
-          {/* <ReactPaginate
+          <ReactPaginate
               previousLabel={'Prev'}
               nextLabel = {'Next'}
               pageCount={pageCount}
@@ -188,7 +181,7 @@ const Dashboard = ({baseUrl}) => {
               containerClassName='flex items-center gap-9 mt-5 justify-end pr-[30px] paginationBtns'
               activeClassName='bg-secondary-color text-white'
               disabledClassName='bg-gray-500 cursor-not-allowed'
-          /> */}
+          />
       </div>
 
     </div>
