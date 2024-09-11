@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { CiUser } from "react-icons/ci";
+import { CiUser, CiShop } from "react-icons/ci";
 import { TiDocumentText } from 'react-icons/ti';
 import { PiNotification } from "react-icons/pi";
 import { TbSettings2 } from "react-icons/tb";
@@ -28,6 +28,12 @@ const SideNav = () => {
           <Link to="/users" className='flex items-center gap-3'>
             <CiUser fontSize={"22px"}/>
             <p>Users</p>
+          </Link>
+        </li>
+        <li className={location.pathname.includes("/shops") || location.pathname === '/' ? `bg-secondary-color py-3 pl-3` : `py-3 pl-3`}>
+          <Link to="/shops" className='flex items-center gap-3'>
+            <CiShop fontSize={"22px"}/>
+            <p>Shops</p>
           </Link>
         </li>
         <li className={location.pathname === "/transactions" ? `bg-secondary-color py-3 pl-3` :`py-3 pl-3`}>

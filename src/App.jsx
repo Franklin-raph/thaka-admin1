@@ -5,6 +5,9 @@ import TopNav from './components/topNav/TopNav'
 import Settings from './pages/settings/Settings'
 import Login from './pages/login/Login'
 import Dashboard from './pages/dashboard/Dashboard'
+import Transactions from './pages/transactions/Transactions'
+import Shops from './pages/shops/Shops'
+import SingleCustomer from './pages/singleCustomer/SingleCustomer'
 
 function App() {
 
@@ -24,8 +27,11 @@ function App() {
             }
             <Route path='/settings' element={<Settings baseUrl={baseUrl}/>}/>
             <Route path='/dashboard' element={<Dashboard baseUrl={baseUrl}/>}/>
-            {/* <Route path='/customer/:id' element={<SingleCustomer baseUrl={baseUrl}/>}/> */}
-            {/* <Route path='/transactions' element={<Transactions baseUrl={baseUrl}/>}/> */}
+            <Route path='/' element={<Dashboard baseUrl={baseUrl}/>}/>
+            <Route path='/users' element={<Dashboard baseUrl={baseUrl}/>}/>
+            <Route path='/customer/:id' element={<SingleCustomer baseUrl={baseUrl}/>}/>
+            <Route path='/transactions' element={<Transactions baseUrl={baseUrl}/>}/>
+            <Route path='/shops' element={<Shops baseUrl={baseUrl}/>}/>
           </Routes>
         </div>
       </div>

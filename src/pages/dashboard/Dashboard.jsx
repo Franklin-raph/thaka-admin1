@@ -46,7 +46,7 @@ const Dashboard = ({baseUrl}) => {
 
   const [pageNumber, setPageNumber] = useState(0)
 
-  const usersPerPage = 5
+  const usersPerPage = 20
   const visitedPages = pageNumber * usersPerPage
 
   const displayUsers = allCustomers
@@ -59,7 +59,7 @@ const Dashboard = ({baseUrl}) => {
         })
         .map((customer, index) => {
             return(
-              <tr class="bg-white border-b cursor-pointer" onClick={e => navigate(`/customer/${customer.id}`)}>
+              <tr class="bg-white border-b cursor-pointer" onClick={e => navigate(`/customer/${customer._id}`)}>
                 {/* <td class="pl-3 pr-6 py-4">
                   {index + 1 }
                 </td>
@@ -82,6 +82,9 @@ const Dashboard = ({baseUrl}) => {
                 <td class="px-6 py-4">
                   {customer?.email}
                 </td>
+                <td class="px-6 py-4">
+                  {customer?.userType}
+                </td>
                 {/* <td class="px-6 py-4">
                   {customer?.phone}
                 </td> */}
@@ -98,19 +101,6 @@ const Dashboard = ({baseUrl}) => {
   return (
     <div className='shadow bg-white rounded-[20px] p-[30px]'>
       <p className='text-[#333333] text-[20px] font-[700]'>Users <span className='text-[#A1A1A1] font-[400]'>({allCustomers.length})</span> </p>
-      {/* <div className='rounded-[8px] border-2 border-[#DCDCDC] p-[30px] mt-3'>
-        <div className='flex items-center gap-[12px]'>
-          {
-            filterArray.map(filter => (
-              <p className='bg-[#EBEBEB] py-1 w-[100px] text-center cursor-pointer text-[#A1A1A1] text-[14px] rounded-full'>{filter}</p>
-            ))
-          }
-        </div>
-        <div className='mt-10'>
-          <p className='text-[#101010]'>Search by name/email</p>
-          <input className='border outline-none border-[#C8C8C8] px-2 py-[6px] mt-[6px] rounded text-[14px]' onChange={e => setSearchString(e.target.value)} type="text" placeholder='Customer Name' />
-        </div>
-      </div> */}
 
       <div class="relative overflow-x-auto sm:rounded-lg mt-9">
           <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -130,6 +120,9 @@ const Dashboard = ({baseUrl}) => {
                       </th> */}
                       <th scope="col" class="px-6 py-3">
                           Email
+                      </th>
+                      <th scope="col" class="px-6 py-3">
+                          User Type
                       </th>
                       {/* <th scope="col" class="px-6 py-3">
                           Phone
