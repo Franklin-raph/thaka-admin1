@@ -47,8 +47,10 @@ const Shops = ({baseUrl}) => {
 
   return (
     <div className='shadow bg-white rounded-[20px] p-[30px]'>
-        <p className='text-[#333333] text-[20px] font-[700]'>Shops <span className='text-[#A1A1A1] font-[400]'>({allCustomers.length})</span> </p>
-
+        <div className='flex items-center justify-between'>
+            <p className='text-[#333333] text-[20px] font-[700]'>Shops</p>
+            <input type="text" className='border w-[320px] py-1 rounded-md outline-none px-2' placeholder='Search Shops'/>
+        </div>
         <div class="relative overflow-x-auto sm:rounded-lg mt-9">
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead class="text-[14px] text-[#5C5C5C] capitalize border-b">
@@ -75,9 +77,9 @@ const Shops = ({baseUrl}) => {
                     // displayUsers
                   allCustomers && allCustomers.filter((customer) => {
                     if (searchString === "") return customer
-                    else if (customer.first_name.toLowerCase().includes(searchString.toLowerCase()) 
-                              || customer.last_name.toLowerCase().includes(searchString.toLowerCase()) 
-                              || customer.last_name.toLowerCase().includes(searchString.toLowerCase())) return customer
+                    else if (customer.name.toLowerCase().includes(searchString.toLowerCase()) 
+                              || customer.address.toLowerCase().includes(searchString.toLowerCase()) 
+                              || customer.phone.toLowerCase().includes(searchString.toLowerCase())) return customer
                   }).map(customer => (
                     <tr class="bg-white border-b cursor-pointer" onClick={e => navigate(`/customer/${customer.id}`)}>
                         <td class="pl-3 pr-6 py-4">

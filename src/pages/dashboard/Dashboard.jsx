@@ -53,9 +53,9 @@ const Dashboard = ({baseUrl}) => {
         .slice(visitedPages, visitedPages + usersPerPage)
         .filter((customer) => {
         if (searchString === "") return customer
-        else if (customer.first_name.toLowerCase().includes(searchString.toLowerCase()) 
-          || customer.last_name.toLowerCase().includes(searchString.toLowerCase()) 
-          || customer.last_name.toLowerCase().includes(searchString.toLowerCase())) return customer
+        else if (customer.email.toLowerCase().includes(searchString.toLowerCase()) 
+          || customer.email.toLowerCase().includes(searchString.toLowerCase()) 
+          || customer.email.toLowerCase().includes(searchString.toLowerCase())) return customer
         })
         .map((customer, index) => {
             return(
@@ -100,7 +100,10 @@ const Dashboard = ({baseUrl}) => {
 
   return (
     <div className='shadow bg-white rounded-[20px] p-[30px]'>
-      <p className='text-[#333333] text-[20px] font-[700]'>Users <span className='text-[#A1A1A1] font-[400]'>({allCustomers.length})</span> </p>
+      <div className='flex items-center justify-between'>
+        <p className='text-[#333333] text-[20px] font-[700]'>Users</p>
+        <input type="text" className='border w-[320px] py-1 rounded-md outline-none px-2' placeholder='Search Users' onChange={e => setSearchString(e.target.value)} />
+      </div>
 
       <div class="relative overflow-x-auto sm:rounded-lg mt-9">
           <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">

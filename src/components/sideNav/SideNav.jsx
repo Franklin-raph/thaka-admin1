@@ -5,6 +5,7 @@ import { TiDocumentText } from 'react-icons/ti';
 import { PiNotification } from "react-icons/pi";
 import { TbSettings2 } from "react-icons/tb";
 import { PiSignOut } from "react-icons/pi";
+import { MdRequestQuote } from 'react-icons/md';
 
 const SideNav = () => {
 
@@ -24,13 +25,13 @@ const SideNav = () => {
     <div className='bg-[#003C2F] w-[15%] h-[100dvh] fixed overflow-y-auto'>
       <h1 className='text-white text-[32px] text-center font-[700] my-5'>Admin</h1>
       <ul className='text-white'>
-        <li className={location.pathname.includes("/users") || location.pathname === '/' ? `bg-secondary-color py-3 pl-3` : `py-3 pl-3`}>
+        <li className={location.pathname.includes("/users") || location.pathname === '/' || location.pathname.includes('customer') ? `bg-secondary-color py-3 pl-3` : `py-3 pl-3`}>
           <Link to="/users" className='flex items-center gap-3'>
             <CiUser fontSize={"22px"}/>
             <p>Users</p>
           </Link>
         </li>
-        <li className={location.pathname.includes("/shops") || location.pathname === '/' ? `bg-secondary-color py-3 pl-3` : `py-3 pl-3`}>
+        <li className={location.pathname.includes("/shops") ? `bg-secondary-color py-3 pl-3` : `py-3 pl-3`}>
           <Link to="/shops" className='flex items-center gap-3'>
             <CiShop fontSize={"22px"}/>
             <p>Shops</p>
@@ -40,6 +41,12 @@ const SideNav = () => {
           <Link to="/transactions" className='flex items-center gap-4'>
             <TiDocumentText />
             <p>Transactions</p>
+          </Link>
+        </li>
+        <li className={location.pathname === "/orders" ? `bg-secondary-color py-3 pl-3` :`py-3 pl-3`}>
+          <Link to="/orders" className='flex items-center gap-4'>
+            <MdRequestQuote />
+            <p>Orders</p>
           </Link>
         </li>
         <li className={location.pathname === "/settings" ? `bg-secondary-color py-3 pl-3` :`py-3 pl-3`}>

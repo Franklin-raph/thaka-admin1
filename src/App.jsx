@@ -8,6 +8,7 @@ import Dashboard from './pages/dashboard/Dashboard'
 import Transactions from './pages/transactions/Transactions'
 import Shops from './pages/shops/Shops'
 import SingleCustomer from './pages/singleCustomer/SingleCustomer'
+import Orders from './pages/orders/Orders'
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
             <Route path='/customer/:id' element={<SingleCustomer baseUrl={baseUrl}/>}/>
             <Route path='/transactions' element={<Transactions baseUrl={baseUrl}/>}/>
             <Route path='/shops' element={<Shops baseUrl={baseUrl}/>}/>
+            <Route path='/orders' element={<Orders baseUrl={baseUrl}/>}/>
           </Routes>
         </div>
       </div>
