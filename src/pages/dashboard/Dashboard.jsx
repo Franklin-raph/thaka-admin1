@@ -12,8 +12,7 @@ const Dashboard = ({baseUrl}) => {
   const [allCustomers, setAllCustomers] = useState([])
 
   async function getAllCustomers(){
-    console.log(admin.data.accessToken, `${baseUrl}/admin/users`);
-    const res = await fetch(`${baseUrl}/admin/users`,{
+    const res = await fetch(`https:tracabe.onrender.com/admin/users`,{
       headers:{
         Authorization:`Bearer ${admin.data.accessToken}`
       }

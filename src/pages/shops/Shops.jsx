@@ -13,8 +13,7 @@ const Shops = ({baseUrl}) => {
   const [allCustomers, setAllCustomers] = useState([])
 
   async function getAllCustomers(){
-    console.log(admin.data.accessToken, `${baseUrl}/admin/resturants`);
-    const res = await fetch(`${baseUrl}/admin/resturants`,{
+    const res = await fetch(`https:tracabe.onrender.com/admin/resturants`,{
       headers:{
         Authorization:`Bearer ${admin.data.accessToken}`
       }
