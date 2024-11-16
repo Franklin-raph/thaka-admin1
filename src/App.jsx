@@ -13,7 +13,7 @@ import Orders from './pages/orders/Orders'
 function App() {
 
   // const baseUrl = 'https://cometake.pythonanywhere.com/administrator'
-  const baseUrl = 'https:tracabe.onrender.com'
+  const baseUrl = 'https://tracabe.onrender.com'
   const admin = JSON.parse(localStorage.getItem('admin'))
 
   return (
