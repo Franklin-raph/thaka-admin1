@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 // import CustomerDropDown from '../../components/customer-drop-down/CustomerDropDown'
 import { useNavigate } from 'react-router-dom'
 import ReactPaginate from 'react-paginate'
+import axios from 'axios'
 
 const Dashboard = ({baseUrl}) => {
 
@@ -12,6 +13,12 @@ const Dashboard = ({baseUrl}) => {
   const [allCustomers, setAllCustomers] = useState([])
 
   async function getAllCustomers(){
+    axios.get(`${baseUrl}/admin/users`,{
+      headers:{
+        Authorization:`Bearer ${admin.data.accessToken}`
+      }
+    }).then(response => console.log(response.data))
+    
     console.log("Getting all customers",`${baseUrl}/admin/users`);
     
     const res = await fetch(`${baseUrl}/admin/users`,{
