@@ -13,7 +13,7 @@ const Orders = ({baseUrl}) => {
     },[])
   
     async function getAllOrders(){
-      const res = await fetch(`https:tracabe.onrender.com/orders`,{
+      const res = await fetch(`https://tracabe.onrender.com/orders`,{
         headers:{
           Authorization:`Bearer ${admin.data.accessToken}`
         }

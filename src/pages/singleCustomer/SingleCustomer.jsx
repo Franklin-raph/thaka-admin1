@@ -14,7 +14,7 @@ const SingleCustomer = ({baseUrl}) => {
     }, [])
 
     async function getCustomer(){
-        const res = await fetch(`https:tracabe.onrender.com/admin/users/${id}`,{
+        const res = await fetch(`https://tracabe.onrender.com/admin/users/${id}`,{
           headers:{
             Authorization:`Bearer ${admin.data.accessToken}`
           }
