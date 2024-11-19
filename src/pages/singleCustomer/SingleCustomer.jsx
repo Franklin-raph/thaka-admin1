@@ -14,7 +14,7 @@ const SingleCustomer = ({baseUrl}) => {
     }, [])
 
     async function getCustomer(){
-        const res = await fetch(`https://tracabe.onrender.com/admin/users/${id}`,{
+        const res = await fetch(`${baseUrl}/admin/users/${id}`,{
           headers:{
             Authorization:`Bearer ${admin.data.accessToken}`
           }
@@ -22,41 +22,11 @@ const SingleCustomer = ({baseUrl}) => {
         const data = await res.json()
         setUser(data.data.users)
         console.log(res, data.data.users);
-        
     }
 
   return (
     <div>
-      <UserInfoCard user={user} />
-      {/* <h1>About {user?.fullname} </h1>
-      <div className='flex items-center gap-3'>
-        <p>Email:</p>
-        <p>{user?.email}</p>
-      </div>
-      <div className='flex items-center gap-3'>
-        <p>Address:</p>
-        <p>{user?.address}</p>
-      </div>
-      <div className='flex items-center gap-3'>
-        <p>Business Address:</p>
-        <p>{user?.businessAddress}</p>
-      </div>
-      <div className='flex items-center gap-3'>
-        <p>LGA:</p>
-        <p>{user?.lga}</p>
-      </div>
-      <div className='flex items-center gap-3'>
-        <p>Personal Address:</p>
-        <p>{user?.personalAddress}</p>
-      </div>
-      <div className='flex items-center gap-3'>
-        <p>State:</p>
-        <p>{user?.state}</p>
-      </div>
-      <div className='flex items-center gap-3'>
-        <p>User Type:</p>
-        <p>{user?.userType}</p>
-      </div> */}
+      <UserInfoCard baseUrl={baseUrl} getCustomer={getCustomer} user={user} />
     </div>
   )
 }

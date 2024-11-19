@@ -10,9 +10,9 @@ const Shops = ({baseUrl}) => {
   const [searchString, setSearchString] = useState('')
   const admin = JSON.parse(localStorage.getItem('admin'))
   const navigate = useNavigate()
-  const [allCustomers, setAllCustomers] = useState([])
+  const [allShops, setAllShops] = useState([])
 
-  async function getAllCustomers(){
+  async function getAllShops(){
     const res = await fetch(`https://tracabe.onrender.com/admin/resturants`,{
       headers:{
         Authorization:`Bearer ${admin.data.accessToken}`
@@ -21,12 +21,12 @@ const Shops = ({baseUrl}) => {
     const data = await res.json()
     console.log(data);
     if(res.ok){
-      setAllCustomers(data.data.resturants.reverse())
+      setAllShops(data.data.resturants.reverse())
     }
     console.log(res, data);
   }
 
-  console.log(allCustomers);
+  console.log(allShops);
 
   // useEffect(() =>{
   //   if(!admin){
@@ -37,7 +37,7 @@ const Shops = ({baseUrl}) => {
 
   useEffect(() => {
     // Ensure user is logged in
-    getAllCustomers()
+    getAllShops()
     if (!admin) {
       navigate('/');
       return;
@@ -67,34 +67,34 @@ const Shops = ({baseUrl}) => {
                             Phone
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Status
+                            Completed
                         </th>
                     </tr>
                 </thead>
                 <tbody>
                 {
-                    // displayUsers
-                  allCustomers && allCustomers.filter((customer) => {
-                    if (searchString === "") return customer
-                    else if (customer.name.toLowerCase().includes(searchString.toLowerCase()) 
-                              || customer.address.toLowerCase().includes(searchString.toLowerCase()) 
-                              || customer.phone.toLowerCase().includes(searchString.toLowerCase())) return customer
-                  }).map(customer => (
-                    <tr class="bg-white border-b cursor-pointer" onClick={e => navigate(`/customer/${customer.id}`)}>
+                    // displayShops
+                  allShops && allShops.filter((shop) => {
+                    if (searchString === "") return shop
+                    else if (shop.name.toLowerCase().includes(searchString.toLowerCase()) 
+                              || shop.address.toLowerCase().includes(searchString.toLowerCase()) 
+                              || shop.phone.toLowerCase().includes(searchString.toLowerCase())) return shop
+                  }).map((shop, index) => (
+                    <tr class="bg-white border-b cursor-pointer" onClick={e => navigate(`/shop/${shop._id}`)}>
                         <td class="pl-3 pr-6 py-4">
-                          {customer.name}
+                          {shop.name}
                         </td>
                         <td class="px-6 py-4">
-                          {customer.email}
+                          {shop.email}
                         </td>
                         <td class="px-6 py-4">
-                          {customer.address}
+                          {shop.address}
                         </td>
                         <td class="px-6 py-4">
-                          {customer.phone}
+                          {shop.phone}
                         </td>
                         <td class="px-6 py-4">
-                          {customer.completed.toString()}
+                          {shop.completed.toString()}
                         </td>
                     </tr>
                   ))

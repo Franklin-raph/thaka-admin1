@@ -38,6 +38,9 @@ const Orders = ({baseUrl}) => {
                 <thead class="text-[14px] text-[#5C5C5C] capitalize border-b">
                     <tr>
                         <th scope="col" class="px-6 py-3">
+                            S/N
+                        </th>
+                        <th scope="col" class="px-6 py-3">
                             Order Number
                         </th>
                         <th scope="col" class="px-6 py-3">
@@ -62,8 +65,11 @@ const Orders = ({baseUrl}) => {
                     else if (order.orderNumber.toLowerCase().includes(searchString.toLowerCase()) 
                             || order.deliveryLocation.toLowerCase().includes(searchString.toLowerCase()) 
                             || order.status.toLowerCase().includes(searchString.toLowerCase())) return order
-                }).map(order => (
+                }).map((order, index) => (
                     <tr class="bg-white border-b cursor-pointer">
+                        <td class="pl-3 pr-6 py-4">
+                            {index + 1}
+                        </td>
                         <td class="pl-3 pr-6 py-4">
                             {order.orderNumber}
                         </td>
@@ -80,7 +86,7 @@ const Orders = ({baseUrl}) => {
                             {new Date(order.createdAt).toLocaleDateString()}
                         </td>
                     </tr>
-                    )).reverse()
+                    ))
                 }
                 </tbody>
             </table>

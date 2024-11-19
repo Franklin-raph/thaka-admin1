@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import ReactPaginate from 'react-paginate'
 import axios from 'axios'
 
-const Dashboard = ({baseUrl}) => {
+const Riders = ({baseUrl}) => {
 
   const filterArray = ['All', 'Inactive', 'Active']
   const [searchString, setSearchString] = useState('')
@@ -12,8 +12,8 @@ const Dashboard = ({baseUrl}) => {
   const navigate = useNavigate()
   const [allCustomers, setAllCustomers] = useState([])
 
-  async function getAllCustomers(){
-    const res = await fetch(`${baseUrl}/admin/users`,{
+  async function getAllRiders(){
+    const res = await fetch(`${baseUrl}/admin/users?role=rider`,{
       headers:{
         Authorization:`Bearer ${admin.data.accessToken}`
       }
@@ -37,7 +37,7 @@ const Dashboard = ({baseUrl}) => {
 
   useEffect(() => {
     // Ensure user is logged in
-    getAllCustomers()
+    getAllRiders()
     if (!admin) {
       navigate('/');
       return;
@@ -113,8 +113,8 @@ const Dashboard = ({baseUrl}) => {
   return (
     <div className='shadow bg-white rounded-[20px] p-[30px]'>
       <div className='flex items-center justify-between'>
-        <p className='text-[#333333] text-[20px] font-[700]'>Users</p>
-        <input type="text" className='border w-[320px] py-1 rounded-md outline-none px-2' placeholder='Search Users' onChange={e => setSearchString(e.target.value)} />
+        <p className='text-[#333333] text-[20px] font-[700]'>Riders</p>
+        <input type="text" className='border w-[320px] py-1 rounded-md outline-none px-2' placeholder='Search Riders' onChange={e => setSearchString(e.target.value)} />
       </div>
 
       <div class="relative overflow-x-auto sm:rounded-lg mt-9">
@@ -196,4 +196,4 @@ const Dashboard = ({baseUrl}) => {
   )
 }
 
-export default Dashboard
+export default Riders

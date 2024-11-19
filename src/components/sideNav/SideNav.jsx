@@ -5,7 +5,7 @@ import { TiDocumentText } from 'react-icons/ti';
 import { PiNotification } from "react-icons/pi";
 import { TbSettings2 } from "react-icons/tb";
 import { PiSignOut } from "react-icons/pi";
-import { MdRequestQuote } from 'react-icons/md';
+import { MdOutlineDirectionsBike, MdRequestQuote } from 'react-icons/md';
 
 const SideNav = () => {
 
@@ -35,6 +35,12 @@ const SideNav = () => {
           <Link to="/shops" className='flex items-center gap-3'>
             <CiShop fontSize={"22px"}/>
             <p>Shops</p>
+          </Link>
+        </li>
+        <li className={location.pathname.includes("/riders") ? `bg-secondary-color py-3 pl-3` : `py-3 pl-3`}>
+          <Link to="/riders" className='flex items-center gap-3'>
+            <MdOutlineDirectionsBike fontSize={"22px"}/>
+            <p>Riders</p>
           </Link>
         </li>
         <li className={location.pathname === "/transactions" ? `bg-secondary-color py-3 pl-3` :`py-3 pl-3`}>
