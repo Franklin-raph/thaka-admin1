@@ -102,7 +102,7 @@ const UserInfoCard = ({ baseUrl, user, getCustomer }) => {
                     </div>
                     <div className='flex items-center gap-5 mt-3 pb-5'>
                         <button className='border-[#19201D] border px-5 py-2 rounded-[4px] text-[14px]' onClick={() => setModal(false)}>Cancel</button>
-                        <button className='bg-[#259a3c] text-white px-5 py-2 rounded-[4px] text-[14px]' onClick={handleverification} >Yes, Verify</button>
+                        <button className='bg-[#259a3c] text-white px-5 py-2 rounded-[4px] text-[14px]' onClick={handleVerification} >Yes, Verify</button>
                     </div>
                 </div>
             </div>
