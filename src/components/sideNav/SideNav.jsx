@@ -31,7 +31,7 @@ const SideNav = () => {
             <p>Users</p>
           </Link>
         </li>
-        <li className={location.pathname.includes("/shops") ? `bg-secondary-color py-3 pl-3` : `py-3 pl-3`}>
+        <li className={location.pathname.includes("/shop") ? `bg-secondary-color py-3 pl-3` : `py-3 pl-3`}>
           <Link to="/shops" className='flex items-center gap-3'>
             <CiShop fontSize={"22px"}/>
             <p>Shops</p>
