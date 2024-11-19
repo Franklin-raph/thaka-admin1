@@ -7,13 +7,14 @@ const Orders = ({baseUrl}) => {
     const navigate = useNavigate()
     const [searchString, setSearchString] = useState('')
     const [allOrders, setAllOrders] = useState([])
+    const [page, setPage] = useState('')
 
     useEffect(() => {
         getAllOrders()
     },[])
   
     async function getAllOrders(){
-      const res = await fetch(`https://tracabe.onrender.com/orders`,{
+      const res = await fetch(`${baseUrl}/orders`,{
         headers:{
           Authorization:`Bearer ${admin.data.accessToken}`
         }
