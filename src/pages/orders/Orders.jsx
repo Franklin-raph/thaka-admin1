@@ -45,6 +45,9 @@ const Orders = ({baseUrl}) => {
                             Order Number
                         </th>
                         <th scope="col" class="px-6 py-3">
+                            Order Location
+                        </th>
+                        <th scope="col" class="px-6 py-3">
                             Delivery Location
                         </th>
                         <th scope="col" class="px-6 py-3">
