@@ -78,6 +78,9 @@ const Orders = ({baseUrl}) => {
                             {order.orderNumber}
                         </td>
                         <td class="px-6 py-4">
+                            Order Location
+                        </td>
+                        <td class="px-6 py-4">
                             {order.deliveryLocation}
                         </td>
                         <td class="px-6 py-4">
