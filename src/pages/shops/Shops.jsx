@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 // import CustomerDropDown from '../../components/customer-drop-down/CustomerDropDown'
 import { useNavigate } from 'react-router-dom'
 import ReactPaginate from 'react-paginate'
+import { BiChevronDown } from 'react-icons/bi'
 
 const Shops = ({baseUrl}) => {
 
@@ -11,6 +12,9 @@ const Shops = ({baseUrl}) => {
   const admin = JSON.parse(localStorage.getItem('admin'))
   const navigate = useNavigate()
   const [allShops, setAllShops] = useState([])
+  const [countries, setCountries] = useState()
+  const [selectedCountry, setSelectedCountry] = useState('')
+  const [dropDown, setDropDown] = useState(false)
 
   async function getAllShops(){
     const res = await fetch(`https://tracabe.onrender.com/admin/resturants`,{
@@ -44,11 +48,41 @@ const Shops = ({baseUrl}) => {
     }
   }, []);
 
+  useEffect(() => {
+      getAllContries()
+  },[])
+
+  async function getAllContries (){
+      const res = await fetch('https://restcountries.com/v3.1/region/africa')
+      const data = await res.json()
+      setCountries(data.sort((a, b) => a.name.common.localeCompare(b.name.common)))
+  }
+
   return (
     <div className='shadow bg-white rounded-[20px] p-[30px]'>
         <div className='flex items-center justify-between'>
             <p className='text-[#333333] text-[20px] font-[700]'>Shops</p>
-            <input type="text" className='border w-[320px] py-1 rounded-md outline-none px-2' placeholder='Search Shops'/>
+            <div className='flex items-center gap-5'>
+                <div onClick={() => setDropDown(!dropDown)} className='flex items-center gap-2 border rounded-md px-2 py-1 cursor-pointer relative'>
+                    <p className='text-gray-500 text-[14px]'>{selectedCountry ? selectedCountry : 'Select country'}</p>
+                    <BiChevronDown className='text-[20px]'/>
+                    {
+                        dropDown &&
+                        <div className='absolute border w-full left-0 top-[36px] rounded-[5px] bg-white z-10 h-[500px] overflow-y-scroll'>
+                        {
+                            countries?.map((country, index) => (
+                            <p key={index} onClick={() => {
+                                setSelectedCountry(country.name.common)
+                                setDropDown(false)
+                            }} className='text-[14px] p-2 cursor-pointer text-gray-500 hover:bg-gray-200'>{country.name.common}</p>
+                            ))
+                        }
+                        </div>
+                    }
+                </div>
+                <input type="text" className='border w-[320px] py-1 rounded-md outline-none px-2' placeholder='Search Shops' onChange={e => setSearchString(e.target.value)} />
+            </div>
+            {/* <input type="text" className='border w-[320px] py-1 rounded-md outline-none px-2' placeholder='Search Shops'/> */}
         </div>
         <div class="relative overflow-x-auto sm:rounded-lg mt-9">
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
