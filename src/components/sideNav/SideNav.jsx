@@ -55,6 +55,12 @@ const SideNav = () => {
             <p>Orders</p>
           </Link>
         </li>
+        <li className={location.pathname === "/accounts" ? `bg-secondary-color py-3 pl-3` :`py-3 pl-3`}>
+          <Link to="/accounts" className='flex items-center gap-4'>
+            <MdRequestQuote />
+            <p>Accounts</p>
+          </Link>
+        </li>
         <li className={location.pathname === "/settings" ? `bg-secondary-color py-3 pl-3` :`py-3 pl-3`}>
           <Link to="/settings" className='flex items-center gap-4'>
             <TbSettings2 />

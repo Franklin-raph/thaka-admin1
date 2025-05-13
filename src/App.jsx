@@ -11,6 +11,7 @@ import SingleCustomer from './pages/singleCustomer/SingleCustomer'
 import Orders from './pages/orders/Orders'
 import Riders from './pages/riders/Riders'
 import SingleShop from './pages/singleShop/SingleShop'
+import Accounts from './pages/accounts/Accounts'
 
 function App() {
 
@@ -37,6 +38,7 @@ function App() {
             <Route path='/shop/:id' element={<SingleShop baseUrl={baseUrl}/>}/>
             <Route path='/transactions' element={<Transactions baseUrl={baseUrl}/>}/>
             <Route path='/shops' element={<Shops baseUrl={baseUrl}/>}/>
+            <Route path='/accounts' element={<Accounts baseUrl={baseUrl}/>}/>
             <Route path='/orders' element={<Orders baseUrl={baseUrl}/>}/>
           </Routes>
         </div>
